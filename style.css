@@ -26,6 +26,16 @@ body {
     align-items: center;
 }
 
+/* CRT Screen Flicker Wrapper */
+.flicker-screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: textShadow 1.6s infinite;
+}
+
 /* Background Effects */
 body::before {
     content: "";
@@ -86,14 +96,20 @@ h1 {
     margin-top: 10px;
 }
 
+.blink-fast {
+    animation: blink 0.5s infinite;
+    color: var(--neon-green);
+}
+
 /* Terminal */
 #terminal {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.85);
     border: 1px solid var(--neon-green);
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
     margin-bottom: 50px;
     overflow: hidden;
+    font-size: 0.95rem;
 }
 
 .terminal-header {
@@ -123,33 +139,45 @@ h1 {
 }
 
 .terminal-body {
-    padding: 20px;
-    min-height: 150px;
+    padding: 20px 20px 5px 20px;
+    color: var(--text-color);
+}
+
+.line {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.prompt {
     color: var(--neon-green);
+    margin-right: 8px;
 }
 
-.cursor {
-    animation: blink 1s step-end infinite;
+.cmd {
+    color: #fff;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+.info { color: var(--neon-cyan); }
+.success { color: var(--neon-green); }
+.success-text { color: var(--neon-green); }
+.offline { color: #555; }
+
+/* Interactive Input */
+.input-line {
+    display: flex;
+    padding: 0 20px 20px 20px;
 }
 
-.output {
-    margin-top: 15px;
-    color: #bbb;
-    opacity: 0;
-    transition: opacity 1s ease-in;
+#cmd-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    flex-grow: 1;
+    outline: none;
+    caret-color: var(--neon-green);
 }
-
-.output.visible {
-    opacity: 1;
-}
-
-.output .info { color: var(--neon-cyan); }
-.output .success { color: var(--neon-green); }
 
 /* Projects */
 #projects h2 {
@@ -193,38 +221,12 @@ h1 {
     animation: blink 2s infinite;
 }
 
-.offline {
-    color: #555;
-}
-
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 16px;
-    background: transparent;
-    border: 1px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-}
-
-.btn:hover {
-    background: var(--neon-cyan);
-    color: black;
-}
-
 .card.locked {
     border-color: #333;
     opacity: 0.7;
 }
 
 .card.locked h3 { color: #555; }
-.btn.disabled {
-    border-color: #333;
-    color: #555;
-    cursor: not-allowed;
-}
 
 footer {
     margin-top: 50px;
@@ -232,6 +234,19 @@ footer {
     font-size: 0.8rem;
     color: #555;
     text-align: center;
+}
+
+/* Animations */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Subtle Screen Flicker */
+@keyframes textShadow {
+    0% { text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+    5% { text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+    100% { text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
 }
 
 /* Glitch Effect */
