@@ -56,53 +56,54 @@ body {
 .particle {
     position: absolute;
     bottom: -10px;
-    background: var(--neon-cyan);
+    background: #fff; /* White core for brightness */
     border-radius: 50%;
     opacity: 0;
-    box-shadow: 0 0 6px var(--neon-cyan); /* Added Glow */
+    /* Intense Glow: Inner Cyan + Outer Cyan */
+    box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan); 
     animation: float-up 10s infinite linear;
 }
 
 @keyframes float-up {
     0% { transform: translateY(0) scale(0); opacity: 0; }
-    20% { opacity: 0.6; }
-    80% { opacity: 0.6; }
+    10% { opacity: 0.8; } /* Visible quicker */
+    90% { opacity: 0.8; }
     100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
 
 /* Randomize Particles (1-30) */
+/* Note: Adding white core + specific color shadows */
 .particle:nth-child(1) { left: 10%; width: 4px; height: 4px; animation-duration: 7s; animation-delay: 0s; }
-.particle:nth-child(2) { left: 20%; width: 6px; height: 6px; animation-duration: 12s; animation-delay: 2s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(2) { left: 20%; width: 6px; height: 6px; animation-duration: 12s; animation-delay: 2s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(3) { left: 35%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: 4s; }
 .particle:nth-child(4) { left: 50%; width: 5px; height: 5px; animation-duration: 15s; animation-delay: 1s; }
-.particle:nth-child(5) { left: 65%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 3s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(5) { left: 65%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 3s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(6) { left: 80%; width: 7px; height: 7px; animation-duration: 11s; animation-delay: 5s; }
 .particle:nth-child(7) { left: 90%; width: 3px; height: 3px; animation-duration: 13s; animation-delay: 0.5s; }
 .particle:nth-child(8) { left: 15%; width: 5px; height: 5px; animation-duration: 10s; animation-delay: 6s; }
-.particle:nth-child(9) { left: 45%; width: 4px; height: 4px; animation-duration: 14s; animation-delay: 2.5s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(9) { left: 45%; width: 4px; height: 4px; animation-duration: 14s; animation-delay: 2.5s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(10) { left: 75%; width: 6px; height: 6px; animation-duration: 9s; animation-delay: 1.5s; }
-/* Extended Set */
+/* Extended Set - Standard Cyan Glow by default */
 .particle:nth-child(11) { left: 5%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: 1s; }
-.particle:nth-child(12) { left: 25%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 4.5s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(12) { left: 25%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 4.5s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(13) { left: 40%; width: 5px; height: 5px; animation-duration: 13s; animation-delay: 0.2s; }
 .particle:nth-child(14) { left: 55%; width: 2px; height: 2px; animation-duration: 6s; animation-delay: 3.5s; }
-.particle:nth-child(15) { left: 70%; width: 4px; height: 4px; animation-duration: 9.5s; animation-delay: 5.5s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(15) { left: 70%; width: 4px; height: 4px; animation-duration: 9.5s; animation-delay: 5.5s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(16) { left: 85%; width: 6px; height: 6px; animation-duration: 14s; animation-delay: 2s; }
 .particle:nth-child(17) { left: 95%; width: 3px; height: 3px; animation-duration: 10.5s; animation-delay: 1s; }
-.particle:nth-child(18) { left: 30%; width: 4px; height: 4px; animation-duration: 12.5s; animation-delay: 6.5s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(18) { left: 30%; width: 4px; height: 4px; animation-duration: 12.5s; animation-delay: 6.5s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(19) { left: 60%; width: 5px; height: 5px; animation-duration: 8.5s; animation-delay: 3s; }
 .particle:nth-child(20) { left: 12%; width: 3px; height: 3px; animation-duration: 15s; animation-delay: 4s; }
 .particle:nth-child(21) { left: 38%; width: 4px; height: 4px; animation-duration: 7.5s; animation-delay: 1.2s; }
-.particle:nth-child(22) { left: 48%; width: 6px; height: 6px; animation-duration: 11.5s; animation-delay: 5.2s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(22) { left: 48%; width: 6px; height: 6px; animation-duration: 11.5s; animation-delay: 5.2s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(23) { left: 58%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: 2.8s; }
 .particle:nth-child(24) { left: 68%; width: 5px; height: 5px; animation-duration: 13.5s; animation-delay: 0.8s; }
-.particle:nth-child(25) { left: 78%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 6s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(25) { left: 78%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 6s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(26) { left: 88%; width: 4px; height: 4px; animation-duration: 12s; animation-delay: 3.2s; }
 .particle:nth-child(27) { left: 2%; width: 5px; height: 5px; animation-duration: 14.5s; animation-delay: 1.8s; }
-.particle:nth-child(28) { left: 98%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 4.2s; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+.particle:nth-child(28) { left: 98%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 4.2s; background: #fff; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
 .particle:nth-child(29) { left: 32%; width: 4px; height: 4px; animation-duration: 10s; animation-delay: 5s; }
 .particle:nth-child(30) { left: 62%; width: 6px; height: 6px; animation-duration: 13s; animation-delay: 2.2s; }
-
 
 /* CRT Overlay */
 .flicker-screen {
@@ -134,10 +135,22 @@ header {
     line-height: 1;
     color: var(--neon-cyan);
     white-space: pre;
-    text-shadow: 0 0 10px var(--neon-cyan);
+    /* REPLACED: New Neon Breathe Animation */
+    animation: neon-breathe 4s ease-in-out infinite alternate;
     margin-bottom: 20px;
     display: inline-block;
     text-align: left;
+}
+
+@keyframes neon-breathe {
+    0% {
+        opacity: 0.7;
+        text-shadow: 0 0 5px var(--neon-cyan);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    }
 }
 
 @media (min-width: 600px) {
@@ -374,53 +387,4 @@ footer {
     text-align: center;
     font-family: var(--font-brand);
     letter-spacing: 2px;
-}
-
-/* Animations */
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
-/* Glitch Effect (Refined for Titanium) */
-.glitch {
-    position: relative;
-}
-
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.glitch::before {
-    left: 2px;
-    text-shadow: -1px 0 var(--neon-purple);
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim 4s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-    left: -2px;
-    text-shadow: -1px 0 var(--neon-cyan);
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim-2 4s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% { clip: rect(14px, 9999px, 12px, 0); }
-    5% { clip: rect(63px, 9999px, 86px, 0); }
-    10% { clip: rect(32px, 9999px, 35px, 0); }
-    100% { clip: rect(82px, 9999px, 19px, 0); }
-}
-
-@keyframes glitch-anim-2 {
-    0% { clip: rect(59px, 9999px, 20px, 0); }
-    5% { clip: rect(98px, 9999px, 36px, 0); }
-    10% { clip: rect(8px, 9999px, 83px, 0); }
-    100% { clip: rect(35px, 9999px, 49px, 0); }
 }
