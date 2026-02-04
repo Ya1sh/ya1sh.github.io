@@ -120,22 +120,25 @@ header {
 
 /* AVATAR STYLE */
 .avatar-container {
-    width: 100px;
-    height: 100px;
+    width: 120px; /* Slightly larger */
+    height: 120px;
     margin: 0 auto 20px auto;
     border-radius: 50%;
-    background: #000;
+    background: rgba(0,0,0,0.8);
     border: 2px solid var(--neon-cyan);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
     animation: neon-breathe 4s infinite alternate;
+    overflow: hidden; /* Keep guns inside */
 }
 
-.avatar-container i {
-    font-size: 3rem;
-    color: white;
+.avatar-container svg.rifle-svg {
+    width: 80%;
+    height: 80%;
+    fill: white;
+    filter: drop-shadow(0 0 5px var(--neon-cyan));
 }
 
 .ascii-art {

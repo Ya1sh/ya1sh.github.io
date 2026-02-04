@@ -25,9 +25,17 @@
 
         <div class="container">
             <header>
-                <!-- AVATAR (New) -->
+                <!-- AVATAR (Crossed Rifles) -->
                 <div class="avatar-container">
-                    <i class="fas fa-user-astronaut"></i>
+                    <svg viewBox="0 0 100 100" class="rifle-svg">
+                        <defs>
+                            <path id="ak47" d="M10,45 L25,45 L28,40 L70,40 L70,42 L85,42 L85,45 L70,45 L70,48 L55,48 L55,58 L45,62 L45,48 L28,48 L25,52 L10,50 Z" />
+                        </defs>
+                        <!-- Rifle 1 (Rotated 45deg) -->
+                        <use href="#ak47" fill="white" transform="translate(50,50) rotate(45) translate(-50,-50) scale(0.8)"/>
+                        <!-- Rifle 2 (Rotated -45deg and flipped) -->
+                        <use href="#ak47" fill="white" transform="translate(50,50) rotate(-45) scale(-1, 1) translate(-50,-50) scale(0.8)"/>
+                    </svg>
                 </div>
 
                 <!-- ASCII ART HEADER -->
