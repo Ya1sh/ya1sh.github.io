@@ -25,6 +25,11 @@
 
         <div class="container">
             <header>
+                <!-- AVATAR (New) -->
+                <div class="avatar-container">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+
                 <!-- ASCII ART HEADER -->
                 <pre class="ascii-art" data-text="
 ██╗   ██╗ █████╗ ██╗███████╗██╗  ██╗
@@ -43,13 +48,16 @@
                 </pre>
             </header>
 
-            <!-- BIO SECTION (New Dashboard Top) -->
+            <!-- BIO SECTION (Updated with Badges) -->
             <section id="bio">
-                <p class="highlight">Full-stack by title, digital explorer by choice.</p>
-                <p class="location">Based in the Maldives, building in the Nexus.</p>
+                <div class="badge-row">
+                    <span class="badge">FULL-STACK DEV</span>
+                    <span class="badge">DIGITAL EXPLORER</span>
+                </div>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> MALDIVES // NEXUS</p>
                 <div class="separator"></div>
                 <p>I specialize in high-output development fueled by AI-augmentation. If a task takes more than ten minutes of manual labor, I’ve already automated it.</p>
-                <p>I’m not interested in the 'how' as much as the 'done'.</p>
+                <p class="quote">"I’m not interested in the 'how' as much as the 'done'."</p>
             </section>
 
             <!-- LinkTree Section -->
@@ -80,13 +88,13 @@
                         <h3>POLYBOT v5</h3>
                         <p class="status">STATUS: <span class="blink">AUTONOMOUS</span></p>
                         <p>Advanced prediction engine with self-correcting neural networks. Features automated market harvesting, kill-switch protocols, and real-time retraining cycles.</p>
-                        <p class="status" style="margin-top:10px; opacity:0.6;">[PRIVATE REPO]</p>
+                        <div class="repo-tag"><i class="fas fa-lock"></i> PRIVATE REPO</div>
                     </div>
                     <div class="card">
                         <h3>TITANIUM CORE</h3>
                         <p class="status">STATUS: <span class="blink-fast" style="color:var(--neon-purple)">IN_DEVELOPMENT</span></p>
                         <p>Full-stack resource planning architecture. Automates component sourcing, commercial invoicing, and client management for system integrators.</p>
-                        <p class="status" style="margin-top:10px; opacity:0.6;">[INTERNAL ALPHA]</p>
+                        <div class="repo-tag"><i class="fas fa-flask"></i> INTERNAL ALPHA</div>
                     </div>
                     <div class="card locked">
                         <h3>PROJECT_03</h3>
@@ -102,7 +110,6 @@
         </div>
     </div>
 
-    <!-- Script removed/minimized since interactive terminal is gone -->
-    <script>console.log("System Online");</script>
+    <script>console.log("TITANIUM OS // SYSTEM ONLINE");</script>
 </body>
 </html>
