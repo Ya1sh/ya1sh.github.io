@@ -44,9 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="line output">
                         <p class="info">USER: ADMIN // NEXUS</p>
                         <br>
-                        <p>I don't play by the old rules.</p>
-                        <p>I leverage AI to build faster than traditional workflows allow.</p>
-                        <p>If it works, it works. Efficiency is the only metric.</p>
+                        <p>Full-stack by title, digital explorer by choice.</p>
+                        <p>Based in the Maldives, building in the Nexus.</p>
+                        <br>
+                        <p>I specialize in high-output development fueled by AI-augmentation.</p>
+                        <p>If a task takes more than ten minutes of manual labor, I’ve already automated it.</p>
+                        <p>I’m not interested in the 'how' as much as the 'done'.</p>
                     </div>`;
                 break;
 
