@@ -13,7 +13,7 @@
     <div class="scanline"></div>
     <div class="flicker-screen">
         
-        <!-- Particles (Increased Count) -->
+        <!-- Particles -->
         <div id="particles">
             <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
             <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -25,8 +25,8 @@
 
         <div class="container">
             <header>
-                <!-- FIXED ASCII ART -->
-                <pre class="ascii-art glitch" data-text="
+                <!-- ASCII ART HEADER -->
+                <pre class="ascii-art" data-text="
 ██╗   ██╗ █████╗ ██╗███████╗██╗  ██╗
 ╚██╗ ██╔╝██╔══██╗██║██╔════╝██║  ██║
  ╚████╔╝ ███████║██║███████╗███████║
@@ -41,8 +41,16 @@
    ██║   ██║  ██║██║███████║██║  ██║
    ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝
                 </pre>
-                <!-- Subtitle Removed -->
             </header>
+
+            <!-- BIO SECTION (New Dashboard Top) -->
+            <section id="bio">
+                <p class="highlight">Full-stack by title, digital explorer by choice.</p>
+                <p class="location">Based in the Maldives, building in the Nexus.</p>
+                <div class="separator"></div>
+                <p>I specialize in high-output development fueled by AI-augmentation. If a task takes more than ten minutes of manual labor, I’ve already automated it.</p>
+                <p>I’m not interested in the 'how' as much as the 'done'.</p>
+            </section>
 
             <!-- LinkTree Section -->
             <section id="linktree">
@@ -64,30 +72,7 @@
                 </a>
             </section>
 
-            <section id="terminal">
-                <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="title">admin@nexus:~ (interactive)</span>
-                </div>
-                <div class="terminal-body" id="terminal-output">
-                    <div class="line">
-                        <span class="prompt">admin@nexus:~$</span> 
-                        <span class="cmd">init_sequence --force</span>
-                    </div>
-                    <div class="line output">
-                        <p class="info">[INFO] System Initialized...</p>
-                        <p class="success">[SUCCESS] Access Granted.</p>
-                        <p>Type 'help' to view available commands.</p>
-                    </div>
-                </div>
-                <div class="input-line">
-                    <span class="prompt">admin@nexus:~$</span>
-                    <input type="text" id="cmd-input" autocomplete="off" autofocus>
-                </div>
-            </section>
-
+            <!-- Projects Section -->
             <section id="projects">
                 <h2>// ACTIVE_DEPLOYMENTS</h2>
                 <div class="grid">
@@ -115,6 +100,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Script removed/minimized since interactive terminal is gone -->
+    <script>console.log("System Online");</script>
 </body>
 </html>
