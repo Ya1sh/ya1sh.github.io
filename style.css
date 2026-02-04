@@ -1,0 +1,235 @@
+:root {
+    --bg-color: #050510;
+    --text-color: #e0e0e0;
+    --neon-cyan: #00f3ff;
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff41;
+    --glass: rgba(255, 255, 255, 0.05);
+    --font-main: 'Share Tech Mono', monospace;
+    --font-head: 'Orbitron', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Background Effects */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(0,0,0,0) 100%);
+    opacity: 0.1;
+    position: fixed;
+    bottom: 100%;
+    animation: scanline 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanline {
+    0% { bottom: 100%; }
+    100% { bottom: -100px; }
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 50px;
+    z-index: 1;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: var(--font-head);
+    font-size: 3rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: var(--neon-pink);
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+/* Terminal */
+#terminal {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--neon-green);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.title {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.terminal-body {
+    padding: 20px;
+    min-height: 150px;
+    color: var(--neon-green);
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.output {
+    margin-top: 15px;
+    color: #bbb;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.output.visible {
+    opacity: 1;
+}
+
+.output .info { color: var(--neon-cyan); }
+.output .success { color: var(--neon-green); }
+
+/* Projects */
+#projects h2 {
+    color: var(--neon-pink);
+    border-bottom: 1px solid var(--neon-pink);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--glass);
+    border: 1px solid var(--neon-cyan);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.card h3 {
+    color: var(--neon-cyan);
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    color: #888;
+}
+
+.blink {
+    color: var(--neon-green);
+    animation: blink 2s infinite;
+}
+
+.offline {
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: var(--neon-cyan);
+    color: black;
+}
+
+.card.locked {
+    border-color: #333;
+    opacity: 0.7;
+}
+
+.card.locked h3 { color: #555; }
+.btn.disabled {
+    border-color: #333;
+    color: #555;
+    cursor: not-allowed;
+}
+
+footer {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+}

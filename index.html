@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User // Nexus</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="scanline"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="glitch" data-text="SYSTEM_ONLINE">SYSTEM_ONLINE</h1>
+            <p class="subtitle">Welcome to the Nexus.</p>
+        </header>
+
+        <section id="terminal">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="title">admin@nexus:~</span>
+            </div>
+            <div class="terminal-body">
+                <p>> <span id="typewriter"></span><span class="cursor">_</span></p>
+                <div class="output hidden">
+                    <p class="info">[INFO] Initializing portfolio protocols...</p>
+                    <p class="success">[SUCCESS] User identity verified.</p>
+                    <br>
+                    <p>I am a developer and explorer of the digital frontier.</p>
+                    <p>Building intelligence. Analyzing markets. Creating the future.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>// ACTIVE_PROJECTS</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>POLYBOT v3</h3>
+                    <p class="status">STATUS: <span class="blink">MONITORING</span></p>
+                    <p>AI-driven prediction engine for Polymarket. Features automated scouting, real-time dashboarding, and safe-mode accumulation.</p>
+                    <a href="#" class="btn">ACCESS_DATA</a>
+                </div>
+                <div class="card locked">
+                    <h3>PROJECT_02</h3>
+                    <p class="status">STATUS: <span class="offline">OFFLINE</span></p>
+                    <p>Data corrupted. Restoration pending...</p>
+                    <span class="btn disabled">LOCKED</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>EST. 2026 // END OF LINE</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
