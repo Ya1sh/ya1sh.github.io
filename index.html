@@ -9,7 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- GHOST TERMINAL -->
+    <div id="terminal-overlay">
+        <div class="terminal-header">TITANIUM OS // COMMAND_LINE</div>
+        <div id="terminal-output">
+            <div class="line">Type 'help' for a list of commands.</div>
+        </div>
+        <div class="input-line">
+            <span class="prompt">guest@nexus:~$</span>
+            <input type="text" id="terminal-input" autocomplete="off">
+        </div>
+    </div>
+
     <div class="overlay"></div>
+    <div class="grain"></div>
     <div class="scanline"></div>
     <div class="flicker-screen">
         
@@ -24,7 +37,7 @@
         </div>
 
         <div class="container">
-            <header>
+            <header class="hidden-section">
                 <!-- RESTORED ASCII ART HEADER (Rifles Removed) -->
                 <pre class="ascii-art" data-text="
 ██╗   ██╗ █████╗ ██╗███████╗██╗  ██╗
@@ -44,7 +57,7 @@
             </header>
 
             <!-- BIO SECTION -->
-            <section id="bio">
+            <section id="bio" class="hidden-section">
                 <div class="badge-row">
                     <span class="badge">FULL-STACK DEV</span>
                     <span class="badge">DIGITAL EXPLORER</span>
@@ -55,28 +68,49 @@
                 <p class="quote">"I’m not interested in the 'how' as much as the 'done'."</p>
             </section>
 
+            <!-- TECH STACK -->
+            <section id="tech-stack" class="hidden-section">
+                <h3>// TECH_ARSENAL</h3>
+                <div class="tech-grid">
+                    <div class="tech-item"><i class="fab fa-python"></i> PYTHON</div>
+                    <div class="tech-item"><i class="fab fa-js"></i> JAVASCRIPT</div>
+                    <div class="tech-item"><i class="fab fa-react"></i> REACT</div>
+                    <div class="tech-item"><i class="fab fa-node"></i> NODE.JS</div>
+                    <div class="tech-item"><i class="fab fa-docker"></i> DOCKER</div>
+                    <div class="tech-item"><i class="fas fa-terminal"></i> BASH</div>
+                </div>
+            </section>
+
+            <!-- CURRENT MISSION -->
+            <section id="current-focus" class="hidden-section">
+                <div class="focus-box">
+                    <span class="focus-label">CURRENT_MISSION:</span>
+                    <span class="focus-text">SCALE POLYBOT TO 10,000 DATA POINTS</span>
+                </div>
+            </section>
+
             <!-- LinkTree Section -->
-            <section id="linktree">
+            <section id="linktree" class="hidden-section">
                 <a href="https://github.com/Ya1sh" target="_blank" class="link-card">
                     <i class="fab fa-github"></i>
                     <span>GITHUB</span>
                 </a>
-                <a href="#" class="link-card">
+                <a href="#" class="link-card locked">
                     <i class="fab fa-discord"></i>
-                    <span>DISCORD</span>
-                </a>
-                <a href="#" class="link-card">
-                    <i class="fab fa-twitter"></i>
-                    <span>TWITTER / X</span>
+                    <span>DISCORD [ACCESS DENIED]</span>
                 </a>
                 <a href="#" class="link-card locked">
+                    <i class="fab fa-twitter"></i>
+                    <span>TWITTER / X [ACCESS DENIED]</span>
+                </a>
+                <a href="#" id="email-btn" class="link-card">
                     <i class="fas fa-envelope"></i>
-                    <span>EMAIL (ENCRYPTED)</span>
+                    <span>DECRYPT EMAIL ADDRESS</span>
                 </a>
             </section>
 
             <!-- Projects Section -->
-            <section id="projects">
+            <section id="projects" class="hidden-section">
                 <h2>// ACTIVE_DEPLOYMENTS</h2>
                 <div class="grid">
                     <div class="card">
