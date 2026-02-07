@@ -87,8 +87,10 @@ function processCommand(cmd) {
             printLine('AVAILABLE COMMANDS:', 'info');
             printLine('  whoami    - User identity');
             printLine('  status    - System integrity check');
+            printLine('  projects  - List active deployments');
             printLine('  polybot   - Polybot V5 diagnostics');
             printLine('  socials   - List comms channels');
+            printLine('  email     - Decrypt contact info');
             printLine('  clear     - Clear terminal');
             break;
         case 'whoami':
@@ -99,6 +101,19 @@ function processCommand(cmd) {
             printLine('SYSTEM STATUS: OPTIMAL', 'success');
             printLine('UPTIME: 99.99%', 'info');
             printLine('SECURITY: ENCRYPTED', 'info');
+            break;
+        case 'projects':
+            printLine('1. POLYBOT v5 [AUTONOMOUS]', 'success');
+            printLine('2. TITANIUM CORE [DEV]', 'info');
+            printLine('3. PROJECT_03 [CLASSIFIED]', 'error');
+            break;
+        case 'email':
+            if (emailBtn) {
+                emailBtn.click();
+                printLine('INITIATING DECRYPTION PROTOCOL...', 'info');
+            } else {
+                printLine('ERROR: EMAIL MODULE NOT FOUND', 'error');
+            }
             break;
         case 'polybot':
             printLine('CONNECTING TO POLYBOT V5...', 'info');
