@@ -12,12 +12,36 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-active');
+                
+                // Animate skill bars
+                if (entry.target.id === 'tech-stack') {
+                    entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                        const targetWidth = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = targetWidth;
+                        }, 100);
+                    });
+                }
+                
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     document.querySelectorAll('.hidden-section, .hidden-left, .hidden-right').forEach(el => observer.observe(el));
+
+    // ASCII Glitch on Scroll
+    const header = document.querySelector('.ascii-art');
+    if (header) {
+        const headerObserver = new IntersectionObserver(entries => {
+            if (!entries[0].isIntersecting && window.scrollY > 100) {
+                header.classList.add('glitch-on-leave');
+                setTimeout(() => header.classList.remove('glitch-on-leave'), 300);
+            }
+        }, { threshold: 0 });
+        headerObserver.observe(header);
+    }
 });
 
 // === EMAIL DECRYPTION PROTOCOL ===
@@ -115,6 +139,10 @@ function processCommand(cmd) {
                 printLine('ERROR: EMAIL MODULE NOT FOUND', 'error');
             }
             break;
+        case 'matrix':
+            printLine('INITIATING MATRIX PROTOCOL...', 'success');
+            startMatrixRain();
+            break;
         case 'polybot':
             printLine('CONNECTING TO POLYBOT V5...', 'info');
             setTimeout(() => {
@@ -204,21 +232,35 @@ document.head.appendChild(styleSheet);
 const cursor = document.querySelector('.cursor');
 const follower = document.querySelector('.cursor-follower');
 
-document.addEventListener('mousemove', (e) => {
-    // Update cursor position
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    
-    // Slight delay for follower
-    setTimeout(() => {
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-    }, 50);
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
 
-    // Update Spotlight Variable
-    document.body.style.setProperty('--cursor-x', e.clientX + 'px');
-    document.body.style.setProperty('--cursor-y', e.clientY + 'px');
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Update Spotlight Variable (throttle naturally via CSS variable)
+    document.body.style.setProperty('--cursor-x', mouseX + 'px');
+    document.body.style.setProperty('--cursor-y', mouseY + 'px');
 });
+
+// Smooth Cursor Animation (requestAnimationFrame is better than setTimeout)
+function animateCursor() {
+    const distX = mouseX - cursorX;
+    const distY = mouseY - cursorY;
+    
+    cursorX = cursorX + distX * 0.2;
+    cursorY = cursorY + distY * 0.2;
+    
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+    
+    follower.style.left = cursorX + 'px';
+    follower.style.top = cursorY + 'px';
+    
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
 
 // Cursor Hover Effects
 document.querySelectorAll('a, button, input, .card, .badge').forEach(el => {
@@ -311,6 +353,39 @@ document.querySelectorAll('.magnetic').forEach(btn => {
         btn.style.transform = 'translate(0, 0)';
     });
 });
+
+// === GITHUB ACTIVITY FETCH ===
+async function fetchGitHubActivity() {
+    const statElement = document.querySelector('.bento-stat');
+    if (!statElement) return;
+
+    try {
+        // Since the GitHub API doesn't give total contributions easily without GraphQL/Auth,
+        // we'll fetch public events and add them to a base number for a "live" feel.
+        const response = await fetch('https://api.github.com/users/Ya1sh/events/public');
+        const data = await response.json();
+        
+        const baseContributions = 1240;
+        const recentActivity = data.length || 0;
+        const total = baseContributions + recentActivity;
+        
+        // Counter animation
+        let current = baseContributions;
+        const interval = setInterval(() => {
+            if (current >= total) {
+                clearInterval(interval);
+                statElement.innerText = `${total.toLocaleString()} CONTRIBUTIONS`;
+            } else {
+                current += 1;
+                statElement.innerText = `${current.toLocaleString()} CONTRIBUTIONS`;
+            }
+        }, 50);
+
+    } catch (err) {
+        console.log("GitHub API fetch failed, using fallback.");
+    }
+}
+fetchGitHubActivity();
 
 // === BENTO GRID CLOCK ===
 function updateClock() {
@@ -461,24 +536,110 @@ requestAnimationFrame(raf);
 function openModal(projectId) {
     const data = projectData[projectId];
     if (data) {
-        modalTitle.innerText = data.title;
-        modalStatus.innerText = data.status;
-        document.getElementById('modal-type').innerText = data.type;
-        modalDesc.innerText = data.desc;
+        const modalBody = modal.querySelector('.modal-body');
+        const originalContent = modalBody.innerHTML;
         
-        // Populate tech stack
-        const techContainer = document.getElementById('modal-tech');
-        techContainer.innerHTML = ''; // Clear previous
-        data.tech.forEach(tech => {
-            const span = document.createElement('span');
-            span.className = 'tech-tag';
-            span.innerText = tech;
-            techContainer.appendChild(span);
-        });
-
+        // Show Loading State
+        modalTitle.innerText = "ACCESSING_SECURE_DATA...";
+        modalBody.innerHTML = `
+            <div class="modal-loading">
+                <div class="spinner"></div>
+                <div class="loading-text">DECRYPTING_ENCRYPTED_SECTORS...</div>
+            </div>
+        `;
+        
         modal.classList.add('active');
         playSound('open');
+        
+        // Brief delay to simulate "accessing"
+        setTimeout(() => {
+            modalTitle.innerText = data.title;
+            modalBody.innerHTML = originalContent;
+            
+            // Re-query elements because innerHTML replacement destroyed original references
+            document.getElementById('modal-status').innerText = data.status;
+            document.getElementById('modal-type').innerText = data.type;
+            document.getElementById('modal-desc').innerText = data.desc;
+            
+            // Populate tech stack
+            const techContainer = document.getElementById('modal-tech');
+            techContainer.innerHTML = ''; 
+            data.tech.forEach(tech => {
+                const span = document.createElement('span');
+                span.className = 'tech-tag';
+                span.innerText = tech;
+                techContainer.appendChild(span);
+            });
+        }, 800);
     }
+}
+
+// === MATRIX RAIN ===
+function startMatrixRain() {
+    let canvas = document.getElementById('matrix-canvas');
+    if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.id = 'matrix-canvas';
+        document.body.appendChild(canvas);
+    }
+    
+    canvas.classList.add('active');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+    
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = "#00F0FF";
+        ctx.font = fontSize + "px monospace";
+        
+        for (let i = 0; i < drops.length; i++) {
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    
+    const matrixInterval = setInterval(draw, 33);
+    
+    // Auto-stop after 10 seconds
+    setTimeout(() => {
+        clearInterval(matrixInterval);
+        canvas.classList.remove('active');
+        setTimeout(() => canvas.remove(), 1000);
+    }, 10000);
+}
+
+// === TERMINAL HINT ===
+if (!localStorage.getItem('terminal-hint-seen')) {
+    const hint = document.createElement('div');
+    hint.className = 'terminal-hint';
+    hint.innerHTML = 'Press <kbd>`</kbd> for terminal access';
+    document.body.appendChild(hint);
+    
+    setTimeout(() => {
+        hint.style.opacity = '1';
+        setTimeout(() => {
+            hint.style.opacity = '0';
+            setTimeout(() => hint.remove(), 500);
+        }, 5000);
+    }, 2000);
+    
+    localStorage.setItem('terminal-hint-seen', 'true');
 }
 
 document.querySelectorAll('.card').forEach(card => {

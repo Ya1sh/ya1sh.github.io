@@ -1189,15 +1189,79 @@ body::before {
 }
 
 /* === MODAL TAGS === */
-.tech-tag {
-    display: inline-block;
-    padding: 4px 10px;
+/* === TERMINAL HINT === */
+.terminal-hint {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
     background: rgba(0, 240, 255, 0.1);
     border: 1px solid var(--neon-cyan);
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.terminal-hint kbd {
+    background: var(--neon-cyan);
+    color: black;
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+/* === GLITCH ON LEAVE === */
+.glitch-on-leave {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important;
+    text-shadow: 2px 2px var(--neon-purple), -2px -2px var(--neon-amber) !important;
+}
+
+/* === MATRIX CANVAS === */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998; /* Just below terminal */
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#matrix-canvas.active {
+    opacity: 0.5;
+}
+
+/* === MODAL LOADING === */
+.modal-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
     color: var(--neon-cyan);
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    margin: 5px;
-    border-radius: 2px;
+    letter-spacing: 2px;
 }
+
+.modal-loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(0, 240, 255, 0.1);
+    border-top-color: var(--neon-cyan);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 
